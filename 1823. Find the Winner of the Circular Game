@@ -18,3 +18,24 @@ public:
         return num;
     }
 };
+
+
+// Iterative Approach 3. Optimised Solution : ITERATIVE APPROACH
+/* Time Complexity : O(n)  Space Complexity : O(1) */
+We can simply convert our Recursive Solution into Iterative Solution.
+This will bring no change in the Time Complexity but the Space Complexity will be optimised from O(n) to O(1).
+Our intution remains the same and looks very much similar to our Recursive Solution.
+
+class Solution {
+public:
+    int helper(int n,int k){
+        int ans = 0;
+        for(int i=1; i<=n; i++){
+            ans = (ans + k) % i;
+        }
+        return ans;
+    }
+    int findTheWinner(int n, int k) {
+        return helper(n,k)+1;   //+1 is for conterting 0-based indexing to 1-based indexing
+    }
+};
