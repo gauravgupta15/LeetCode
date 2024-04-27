@@ -2,14 +2,15 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         if(s.size()!=t.size()) return false;
-        unordered_map<char,int>mpp;
+        int freq[26];
         for(char ch : t) {
-            mpp[ch]++;
+            freq[ch - 'a']++;
         }
         for(char it : s) {
-            if(mpp.find(it)==mpp.end()) return false;
-            mpp[it]--;
-            if(mpp[it] == 0) mpp.erase(it);
+           freq[it - 'a']--;
+        }
+        for(int i : freq) {
+            if(i!=0) return false;
         }
         return true;
     }
