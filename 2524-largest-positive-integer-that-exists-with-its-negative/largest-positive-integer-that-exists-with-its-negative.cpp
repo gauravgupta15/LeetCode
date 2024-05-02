@@ -1,21 +1,13 @@
 class Solution {
 public:
     int findMaxK(vector<int>& nums) {
-        unordered_map<int,int>mpp;
-        int maxi = -1;
-        for(int it : nums) {
-            if(it < 0) {
-                mpp[abs(it)]++;
-            }
+       sort(nums.begin(),nums.end());
+       int i=0,j=nums.size()-1;
+        while(i<j) {
+           if(-nums[i] < nums[j]) j--;
+           else if(-nums[i] > nums[j]) i++;
+           else return nums[j];
         }
-        for(int it : nums) {
-            if(it > 0) {
-                if(mpp.find(it)!=mpp.end()) {
-                    cout << it;
-                    maxi=max(maxi,it);
-                }
-            }
-        }
-        return maxi;
+        return -1;
     }
 };
