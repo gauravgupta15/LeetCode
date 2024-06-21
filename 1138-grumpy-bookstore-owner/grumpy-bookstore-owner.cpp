@@ -9,7 +9,6 @@ public:
         while(j<customers.size()) {
             if(grumpy[j] == 1)
                 check+=customers[j];
-            cout << check<< endl;
             if(j-i+1 < minutes) j++;
             else {
                 maxi=max(check,maxi);
@@ -19,7 +18,6 @@ public:
                 j++;
             }
         }
-        cout << sum << " "<<maxi;
         sum+=maxi;
         return sum;
     
