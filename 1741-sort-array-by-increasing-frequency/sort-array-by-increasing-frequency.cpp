@@ -1,31 +1,27 @@
 class Solution {
 public:
-
-    vector<int> frequencySort(vector<int>& nums) {\
-        // sort(nums.begin(),nums.end());
+    bool sortlen(const pair<int,int>a,const pair<int,int>b) {
+        return a.second > b.second;
+    }
+    vector<int> frequencySort(vector<int>& nums) {
         unordered_map<int,int>mpp;
-        vector<int>v;
-
-             for(int it : nums) {
-            mpp[it]++;
+        for(int it : nums) mpp[it]++;
+        vector<pair<int,int>>freq(mpp.begin(),mpp.end());
+        sort(freq.begin(),freq.end(),[]( pair<int,int>&a, pair<int,int>&b) {
+            if (a.second == b.second) {
+                return a.first > b.first; 
+            }
+            return a.second < b.second;
+        });
+        vector<int>ans;
+        for(auto it : freq) {
+            for(int i=0; i < it.second; i++) {
+                ans.push_back(it.first);
+            }
         }
+        return ans;
 
-       sort(nums.begin(),nums.end(), [&mpp](int a, int b) {
-        if(mpp[a]!=mpp[b]) {
-            return mpp[a]<mpp[b];
-        }
-        return a>b;
-       });
-
-        return nums;
-        // vector<int>v;
-        // while(!minH.empty()) {
-        //     v.push_back(minH.top());
-        //     minH.pop();
-        // }
-        // for(int  i : v) {
-        //     if
-        // }
+        
         
     }
 };
