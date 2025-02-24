@@ -9,9 +9,6 @@ class Solution {
             mpp.put(ch, mpp.getOrDefault(ch,0)+1);
             while(mpp.get(ch) > 1 && i<=j) {
                 mpp.put(s.charAt(i), mpp.getOrDefault(s.charAt(i),0)-1);
-                if(mpp.get(s.charAt(i)) == 0) {
-                    mpp.remove(s.charAt(i));
-                }
                 i++;
             }
 
